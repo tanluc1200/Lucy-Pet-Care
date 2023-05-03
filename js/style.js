@@ -66,3 +66,32 @@ listItem.forEach((e) => {
         featuresLine.style.width = `${e.offsetWidth}px`;
     });
 });
+
+// Làm hiệu ứng zoom ảnh tại Section Services
+const img = document.querySelector(".services-item-pic > img");
+const result = document.querySelector(".result");
+img.addEventListener("mousemove", (e) => {
+    result.style.opacity = 1;
+    result.style.left = `${e.clientX}px`;
+    result.style.top = `${e.clientY}px`;
+    let offsetX, offsetY;
+    // if (e.offsetX) {
+    // Nếu dùng chuột để zoom
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
+    // } else {
+    //     // Nếu sử dụng touch để zoom
+    //     offsetX = e.touches[0].pageX;
+    //     offsetY = e.touches[0].pageY;
+    // }
+    // Tính toán tỷ lệ vị trí con trỏ so với kích thước phần tử zoomer
+    let x = (offsetX / e.currentTarget.offsetWidth) * 100;
+    let y = (offsetY / e.currentTarget.offsetHeight) * 100;
+    // Thiết lập vị trí background của phần tử zoom để có hiệu ứng zoom
+    let src = e.target.getAttribute("src");
+    result.style.backgroundImage = `url("${src}")`;
+    result.style.backgroundPosition = x + "% " + y + "%";
+});
+img.addEventListener("mouseleave", () => {
+    result.style.opacity = 0;
+});
