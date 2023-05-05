@@ -86,7 +86,7 @@ img.addEventListener("mousemove", (e) => {
     //     offsetX = e.touches[0].pageX;
     //     offsetY = e.touches[0].pageY;
     // }
-    // Tính toán tỷ lệ vị trí con trỏ so với kích thước phần tử zoom
+    // Tính toán tỷ lệ vị trí con trỏ so với kích thước phần tử zoomer
     let x = (offsetX / e.currentTarget.offsetWidth) * 100;
     let y = (offsetY / e.currentTarget.offsetHeight) * 100;
     // Thiết lập vị trí background của phần tử zoom để có hiệu ứng zoom
@@ -122,6 +122,85 @@ listBlock.forEach((item) => {
 });
 
 // Xử lý phần slider Testimonial
+const arr = [
+    {
+        img: "./img/testimonial-img-1.png",
+        desc: `“It was very comforting to recieve a text and pics each day about our pets and how they were doing. It was also nice that my pets were in the comfortable environment of their own home and received playfull attention from our pet sitters as well. Thanks so much!”`,
+        name: "Karla Deras",
+    },
+    {
+        img: "./img/testimonial-img-2.png",
+        desc: `"Receiving daily updates and pictures of our pets in the comfort of their own home was incredibly reassuring. It was clear that our pet sitters gave them playful and attentive care, and we couldn't be more grateful for their service."`,
+        name: "Jane Austen",
+    },
+    {
+        img: "./img/testimonial-img-3.png",
+        desc: `"Knowing that our pets were in good hands and receiving personalized care in the familiar environment of their own home was a huge relief. The daily text updates and pictures were a thoughtful touch that we really appreciated."`,
+        name: "Mark Twain",
+    },
+    {
+        img: "./img/testimonial-img-4.png",
+        desc: `"We were thrilled to receive daily updates and photos of our pets during our time away. It was obvious that our pet sitters took great care of them and made sure they felt comfortable and loved. Thank you so much for your excellent service!"`,
+        name: "Gabriel García Márquez",
+    },
+];
+// Xử lý page dots dot phần Testimonial
+// function dotEvent(e) {
+//     const listDot = $$(".testimonial .dot");
+//     listDot.forEach((item, index) => {
+//         item.addEventListener("click", () => {
+//             const isDotActive = $(".testimonial .dot.active");
+//             if (isDotActive) {
+//                 isDotActive.classList.remove("active");
+//             }
+//             item.classList.add("active");
+//             updateSlider(index);
+//             currentIndex = index;
+//         });
+//         if (e === index) {
+//             const isDotActive = $(".testimonial .dot.active");
+//             if (isDotActive) {
+//                 isDotActive.classList.remove("active");
+//             }
+//             item.classList.add("active");
+//         }
+//     });
+// }
+// dotEvent();
+// function updateSlider(index) {
+//     const img = $(".testimonial-pic-img");
+//     img.setAttribute("src", arr[index].img);
+//     const desc = $(".testimonial-info-desc");
+//     desc.innerText = arr[index].desc;
+//     const name = $(".testimonial-info-name");
+//     name.innerText = arr[index].name;
+// }
+// // Xử lý btn-next phần testimonial
+// const nextPage = $(".testimonial-btn-next");
+// const prevPage = $(".testimonial-btn-prev");
+
+// let currentIndex = 0;
+// console.log(arr.length);
+// nextPage.addEventListener("click", () => {
+//     // currentIndex++;
+//     // if (currentIndex >= arr.length) {
+//     //     currentIndex = 0;
+//     // }
+//     currentIndex = (currentIndex + 1) % arr.length;
+//     updateSlider(currentIndex);
+//     dotEvent(currentIndex);
+//     console.log(currentIndex);
+// });
+// prevPage.addEventListener("click", () => {
+//     // currentIndex--;
+//     // if (currentIndex < 0) {
+//     //     currentIndex = arr.length - 1;
+//     // }
+//     currentIndex = (currentIndex - 1 + arr.length) % arr.length;
+//     updateSlider(currentIndex);
+//     dotEvent(currentIndex);
+//     console.log(currentIndex);
+// });
 const testimonials = {
     arr: [
         {
@@ -191,18 +270,6 @@ const testimonials = {
         });
         this.dotEvent();
     },
-    handleEvent: function () {
-        const listBtn = $$(".testimonial-btn");
-        listBtn.forEach((item) => {
-            item.addEventListener("mouseover", () => {
-                item.classList.add("active");
-            });
-            item.addEventListener("mouseout", () => {
-                item.classList.remove("active");
-            });
-        });
-    },
 };
 
 testimonials.init();
-testimonials.handleEvent();
